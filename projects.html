@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg bard.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav, footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem; 
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            text-shadow: 0 0 12px rgba(255, 255, 0, 0.8);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            flex: 1;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.3rem; 
+            margin-bottom: 30px;
+        }
+
+        .category {
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffcc00;
+            transform: scale(1.05);
+        }
+
+        .project-list {
+            max-height: 0; 
+            overflow: hidden; 
+            padding: 0 10px; 
+            transition: max-height 0.5s ease-in-out; 
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .project-list.open {
+            max-height: 500px; 
+            padding: 10px;
+        }
+
+        ul li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-images {
+            display: flex;
+            max-width: 100%;
+            overflow-x: scroll;
+            padding: 10px 0;
+            scrollbar-width: none;
+        }
+
+        .project-images::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-images img {
+            max-width: 100px;  /* Set a smaller max width */
+            max-height: 100px; /* Set a max height to maintain aspect ratio */
+            margin: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .project-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .project-videos {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .project-videos video {
+            max-width: 240px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .fullscreen video {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-fullscreen {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(255, 0, 0, 0.7);
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">My Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="menu.html">Potential</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section>
+            <h1>My Projects</h1>
+            <p>Click on a category to see the projects:</p>
+
+            <div class="category" onclick="toggleProjects('animation-art')">
+                Project (2D Animation, Art)
+            </div>
+            <ul id="animation-art" class="project-list">
+                <li><strong>Project A:</strong> Description of 2D Animation project.</li>
+                
+                <div class="project-images">
+                    <img src="image1.jpg" alt="Project A Image 1" onclick="openFullscreen(this.src)">
+                    <img src="image2.jpg" alt="Project A Image 2" onclick="openFullscreen(this.src)">
+                    <img src="image3.jpg" alt="Project A Image 3" onclick="openFullscreen(this.src)">
+                    <img src="image12.jpg" alt="Project A Image 4" onclick="openFullscreen(this.src)">
+                    <img src="image13.jpg" alt="Project A Image 5" onclick="openFullscreen(this.src)">
+                    <img src="image14.jpg" alt="Project A Image 6" onclick="openFullscreen(this.src)">
+                    <img src="image15.jpg" alt="Project A Image 7" onclick="openFullscreen(this.src)">
+                    <img src="image16.jpg" alt="Project A Image 3" onclick="openFullscreen(this.src)">
+                    <img src="image17.jpg" alt="Project A Image 4" onclick="openFullscreen(this.src)">
+                    <img src="image18.jpg" alt="Project A Image 5" onclick="openFullscreen(this.src)">
+                    <img src="image19.jpg" alt="Project A Image 6" onclick="openFullscreen(this.src)">
+                    <img src="image20.jpg" alt="Project A Image 7" onclick="openFullscreen(this.src)">
+                </div>
+
+            </ul>
+
+
+
+            <div class="category" onclick="toggleProjects('Game Developmen')">
+                Project (Game Developmen)
+            </div>
+            <ul id="Game Developmen" class="project-list">
+                <li><strong>Project C:</strong>Description of Game Development project.</li>
+                
+                <div class="project-images">
+                    <img src="image7.jpg" alt="Project C Image 1" onclick="openFullscreen(this.src)">
+                    <img src="image8.jpg" alt="Project C Image 2" onclick="openFullscreen(this.src)">
+                    <img src="image9.jpg" alt="Project C Image 3" onclick="openFullscreen(this.src)">
+                    <img src="image81.jpg" alt="Project C Image 2" onclick="openFullscreen(this.src)">
+                    <img src="image91.jpg" alt="Project C Image 3" onclick="openFullscreen(this.src)">
+                </div>
+
+            </ul>
+
+            <div class="category" onclick="toggleProjects('assingment')">
+                Project (assingment)
+            </div>
+            <ul id="assingment" class="project-list">
+                <li><strong>Project D:</strong> Description of Game Development project.</li>
+                
+                <div class="project-images">
+                    <img src="image10.jpg" alt="Project D Image 1" onclick="openFullscreen(this.src)">
+                    <img src="image11.jpg" alt="Project D Image 2" onclick="openFullscreen(this.src)">
+                    <img src="image21.jpg" alt="Project D Image 1" onclick="openFullscreen(this.src)">
+                    <img src="image22.jpg" alt="Project D Image 2" onclick="openFullscreen(this.src)">
+                    <img src="image23.jpg" alt="Project D Image 2" onclick="openFullscreen(this.src)">
+                    <img src="posterpp.jpg" alt="Project D Image 2" onclick="openFullscreen(this.src)">
+                </div>
+
+            </ul>
+
+            <div class="fullscreen" id="fullscreen" onclick="closeFullscreen()">
+                <span class="close-fullscreen" onclick="closeFullscreen()">X</span>
+                <img id="fullscreen-img" alt="Fullscreen Image">
+                <video id="fullscreen-video" controls style="display: none;"></video>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleProjects(id) {
+            const projectList = document.getElementById(id);
+            projectList.classList.toggle('open');
+        }
+
+        function openFullscreen(src) {
+            const fullscreen = document.getElementById('fullscreen');
+            const fullscreenImg = document.getElementById('fullscreen-img');
+            const fullscreenVideo = document.getElementById('fullscreen-video');
+
+            fullscreen.style.display = 'flex';
+            fullscreenImg.src = src;
+            fullscreenImg.style.display = 'block';
+            fullscreenVideo.style.display = 'none';
+        }
+
+        function closeFullscreen() {
+            const fullscreen = document.getElementById('fullscreen');
+            fullscreen.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

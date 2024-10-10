@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: 
+                url('Resume2.jpg') no-repeat center center fixed, /* Add your background image here */
+                linear-gradient(to right, rgba(255, 123, 57, 0.7), rgba(255, 123, 57, 0.7)); /* Gradient overlay */
+            background-size: cover; /* Cover the entire viewport */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full height */
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem; /* Consistent font size */
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            text-shadow: 0 0 12px rgba(255, 255, 0, 0.8);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            flex: 1; /* Allow section to grow */
+            display: flex; /* Use flexbox */
+            flex-direction: column; /* Stack images vertically */
+            align-items: center; /* Center images */
+            justify-content: center; /* Center images vertically */
+            overflow: hidden; /* Prevent scrolling */
+            opacity: 0; /* Initial opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Final opacity */
+            }
+        }
+
+        .resume, .business-card {
+            width: 80%; /* Adjust width as necessary */
+            max-width: 900px; /* Prevent too large */
+            cursor: move; /* Show move cursor */
+            margin: 20px 0; /* Space between images */
+            position: relative; /* For dragging functionality */
+            transition: transform 0.3s ease; /* Animation for scaling */
+        }
+
+        .resume:hover, .business-card:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            margin-top: auto; /* Push footer to the bottom */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem; /* Consistent footer text size */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">My Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="menu.html">Potential</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section>
+            <img src="resume.jpg" alt="My Resume" class="resume" id="resume">
+            <img src="business-card-front.jpg" alt="Business Card Front" class="business-card" id="businessCardFront">
+            <img src="business-card-back.jpg" alt="Business Card Back" class="business-card" id="businessCardBack">
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function makeDraggable(element) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+            element.onmousedown = function(e) {
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            };
+
+            function elementDrag(e) {
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        // Make images draggable
+        makeDraggable(document.getElementById("resume"));
+        makeDraggable(document.getElementById("businessCardFront"));
+        makeDraggable(document.getElementById("businessCardBack"));
+    </script>
+
+</body>
+</html>
