@@ -119,32 +119,8 @@
             font-size: 1rem;
         }
 
-        /* Flower bloom animation */
-        .flower {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: url('flower.png') no-repeat center center;
-            background-size: contain;
-            animation: bloom 4s ease-in-out;
-        }
-
-        @keyframes bloom {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
-                /* Media Queries for Mobile Responsiveness */
-                @media (max-width: 768px) {
+                        /* Media Queries for Mobile Responsiveness */
+                        @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
                 align-items: center;
@@ -182,6 +158,34 @@
                 font-size: 0.7rem;
             }
         }
+
+
+        /* Flower bloom animation */
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('flower.png') no-repeat center center;
+            background-size: contain;
+            animation: bloom 4s ease-in-out;
+        }
+
+        @keyframes bloom {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+
 
     </style>
 </head>
