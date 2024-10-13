@@ -12,9 +12,9 @@
             margin: 0;
             padding: 0;
             background: 
-                linear-gradient(to right, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.8)), /* Gradient */
-                url('About me.jpg') no-repeat center center fixed; /* Add your background image */
-            background-size: cover; /* Cover the entire viewport */
+                linear-gradient(to right, rgba(20, 30, 48, 0.8), rgba(36, 59, 85, 0.8)), 
+                url('About me.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -38,6 +38,7 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* Ensure items wrap on smaller screens */
         }
 
         nav ul li {
@@ -49,7 +50,7 @@
             padding: 14px 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem; /* Consistent font size */
+            font-size: 1rem;
             margin: 0 10px;
             transition: all 0.3s ease;
         }
@@ -66,7 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 40px 20px; /* Add padding for smaller screens */
         }
 
         section {
@@ -78,27 +79,28 @@
             border-radius: 10px;
             text-align: center;
             animation: fadeIn 1.2s ease;
+            width: 100%;
         }
 
         section h1 {
-            font-size: 2.5rem; /* Adjusted font size to match other page */
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: #ffcc00;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
         }
 
         section p {
-            font-size: 1.3rem; /* Adjusted font size to match the project page */
+            font-size: 1.3rem;
             margin-bottom: 30px;
             line-height: 1.8;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
         }
 
         .face-image {
-            width: 100px; /* Set the width of the face image */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 50%; /* Make it circular */
-            margin-bottom: 20px; /* Space below the image */
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
         }
 
         .bar-container {
@@ -108,31 +110,12 @@
             text-align: left;
         }
 
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
-            }
-            25% {
-                box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(0, 0, 255, 0.7);
-            }
-            75% {
-                box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
-            }
-        }
-
         .bar {
-            background: #ffcc00; /* Set the background color to yellow */
+            background: #ffcc00;
             border-radius: 5px;
-            height: 30px; /* Height of each bar */
+            height: 30px;
             transition: width 0.5s ease;
-            margin: 10px 0; /* Space between bars */
-            animation: glow 1.5s infinite alternate; /* Keep the glow animation */
+            margin: 10px 0;
         }
 
         .label {
@@ -151,10 +134,9 @@
 
         footer p {
             margin: 0;
-            font-size: 1rem; /* Consistent footer text size */
+            font-size: 1rem;
         }
 
-        /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -163,6 +145,48 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            nav a {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            section h1 {
+                font-size: 2rem;
+            }
+
+            section p {
+                font-size: 1.1rem;
+            }
+
+            .bar-container {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section h1 {
+                font-size: 1.7rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+
+            .bar-container {
+                max-width: 100%;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
             }
         }
     </style>
@@ -182,7 +206,7 @@
     <div class="container">
         <section>
             <h1>About Me</h1>
-            <img src="your-face-image.jpg" alt="Your Face" class="face-image" /> <!-- Add your face image path -->
+            <img src="your-face-image.jpg" alt="Your Face" class="face-image" />
             <p>Hey there! I'm a game developer with years of experience creating all kinds of games: platformers, horror, educational, visual novels, and design, video editing. I’m super passionate about designing games that really pull players in, whether it’s through exciting gameplay, thrilling stories, or building suspenseful atmospheres. I love pushing creative boundaries, especially in horror and educational games. I’m always excited to bring my artistic skills to a team that’s looking to make unique and unforgettable games. Let’s make something awesome!</p>
 
             <div class="bar-container">

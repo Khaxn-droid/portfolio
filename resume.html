@@ -15,6 +15,7 @@
                 url('Resume2.jpg') no-repeat center center fixed, /* Add your background image here */
                 linear-gradient(to right, rgba(255, 123, 57, 0.7), rgba(255, 123, 57, 0.7)); /* Gradient overlay */
             background-size: cover; /* Cover the entire viewport */
+            background-attachment: fixed; /* Fix background for better mobile experience */
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -49,7 +50,7 @@
             padding: 14px 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem; /* Consistent font size */
+            font-size: 1rem;
             margin: 0 10px;
             transition: all 0.3s ease;
         }
@@ -68,29 +69,30 @@
             background-color: rgba(255, 255, 255, 0.1);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            flex: 1; /* Allow section to grow */
-            display: flex; /* Use flexbox */
-            flex-direction: column; /* Stack images vertically */
-            align-items: center; /* Center images */
-            justify-content: center; /* Center images vertically */
-            overflow: hidden; /* Prevent scrolling */
-            opacity: 0; /* Initial opacity for fade-in */
-            animation: fadeIn 1s forwards; /* Fade-in animation */
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
         }
 
         @keyframes fadeIn {
             to {
-                opacity: 1; /* Final opacity */
+                opacity: 1;
             }
         }
 
         .resume, .business-card {
             width: 80%; /* Adjust width as necessary */
             max-width: 900px; /* Prevent too large */
+            height: auto; /* Maintain aspect ratio */
             cursor: move; /* Show move cursor */
             margin: 20px 0; /* Space between images */
             position: relative; /* For dragging functionality */
-            transition: transform 0.3s ease; /* Animation for scaling */
+            transition: transform 0.3s ease;
         }
 
         .resume:hover, .business-card:hover {
@@ -103,12 +105,12 @@
             text-align: center;
             padding: 15px;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-            margin-top: auto; /* Push footer to the bottom */
+            margin-top: auto;
         }
 
         footer p {
             margin: 0;
-            font-size: 1rem; /* Consistent footer text size */
+            font-size: 1rem;
         }
     </style>
 </head>
