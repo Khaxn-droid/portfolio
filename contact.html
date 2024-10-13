@@ -143,6 +143,47 @@
                 opacity: 0;
             }
         }
+
+                        /* Media Queries for Mobile Responsiveness */
+                        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+
+            body {
+                overflow: auto; /* Allow scrolling on smaller screens */
+            }
+
+            .background {
+                background-position: top center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+            }
+
+            footer p {
+                font-size: 0.7rem;
+            }
+        }
+
     </style>
 </head>
 <body>
