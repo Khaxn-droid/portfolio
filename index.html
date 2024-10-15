@@ -108,7 +108,7 @@
             position: relative;
         }
 
-        .moving-button {
+        .static-button {
             display: inline-block;
             padding: 14px 35px;
             font-size: 1.2rem;
@@ -116,13 +116,14 @@
             background: linear-gradient(45deg, #ffcc00, #ff0066);
             border-radius: 50px;
             border: none;
-            position: absolute;
-            transition: all 0.3s ease;
-            cursor: pointer;
             z-index: 1;
+            cursor: pointer;
+            /* Set fixed position */
+            position: relative; /* Change to relative or static */
+            top: 20px; /* Adjust positioning as needed */
         }
 
-        .moving-button:hover {
+        .static-button:hover {
             transform: scale(1.1);
         }
 
@@ -159,7 +160,7 @@
                 font-size: 1.2rem;
             }
 
-            .moving-button {
+            .static-button {
                 padding: 10px 20px;
                 font-size: 1rem;
             }
@@ -174,7 +175,7 @@
                 font-size: 1rem;
             }
 
-            .moving-button {
+            .static-button {
                 padding: 8px 15px;
                 font-size: 0.9rem;
             }
@@ -184,7 +185,7 @@
 <body>
 
     <nav>
-        <div class="logo">Mk Legacy</div> <!-- Company name on the left -->
+        <div class="logo">Mk Legacy</div>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">My Projects</a></li>
@@ -198,7 +199,7 @@
     <div class="hero">
         <h1>Welcome to My Game Development Portfolio</h1>
         <p>Game Developer | Multimedia Designer | Creative Storyteller</p>
-        <a href="#" class="moving-button" id="movingButton">About Me</a>
+        <a href="about.html" class="static-button">About Me</a>
     </div>
 
     <footer>
@@ -206,37 +207,7 @@
     </footer>
 
     <script>
-        const button = document.getElementById('movingButton');
-        let isMoving = true;
-
-        function moveButton() {
-            if (!isMoving) return;
-
-            const x = Math.random() * (window.innerWidth - 150);
-            const y = Math.random() * (window.innerHeight - 150);
-
-            button.style.left = `${x}px`;
-            button.style.top = `${y}px`;
-
-            setTimeout(moveButton, 1000); // Move every second
-        }
-
-        button.addEventListener('click', () => {
-            isMoving = false;
-            window.location.href = "about.html"; // Redirect to the about page
-        });
-
-        moveButton();
-
-        // Function to change the RGB color of the button
-        function changeButtonColor() {
-            const r = Math.floor(Math.random() * 256);
-            const g = Math.floor(Math.random() * 256);
-            const b = Math.floor(Math.random() * 256);
-            button.style.background = `linear-gradient(45deg, rgb(${r}, ${g}, ${b}), rgb(${(r + 50) % 256}, ${(g + 50) % 256}, ${(b + 50) % 256}))`; // Gradient with RGB colors
-        }
-
-        setInterval(changeButtonColor, 500); // Change button color every 500 milliseconds
+        // No need for button movement logic
     </script>
 
 </body>
